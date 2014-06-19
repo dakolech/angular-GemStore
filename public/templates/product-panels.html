@@ -1,16 +1,4 @@
-<html ng-app="store">
-	<head>
-		<title>GemStore</title>
-		<link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.min.css" />
-		<link rel="stylesheet" type="text/css" href="stylesheets/style.css" />
-	</head>
-	<body ng-controller="StoreController as store">
-		<ul class="list-group" style="width:600px" class="pull-center">
-			<li class="list-group-item" ng-repeat="product in store.products | orderBy:'-price'">
-				<h3 product-title></h3>
-				<img ng-src="./images/{{product.images[0].full}}"/>
-				
-				<section ng-controller="PanelController as panel">
+<section ng-controller="PanelController as panel">
 					<ul class="nav nav-pills">
 						<li ng-class="{ active:panel.isSelected(1) }"> 
 							<a href ng-click="panel.selectTab(1)">Description</a> 
@@ -61,14 +49,3 @@
 						</form>
 					</div>
 				</section>
-				
-			</li>
-		</ul>
-		
-		
-
-		
-		<script type="text/javascript" src="javascripts/angular.min.js"></script>
-		<script type="text/javascript" src="javascripts/app.js"></script>
-	</body>
-</html>
