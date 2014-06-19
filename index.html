@@ -4,11 +4,9 @@
 		<link rel="stylesheet" type="text/css" href="stylesheets/style.css" />
 	</head>
 	<body ng-controller="StoreController as store">
-		<ul class="list-group" style="width:600px">
+		<ul class="list-group" style="width:600px" class="pull-center">
 			<li class="list-group-item" ng-repeat="product in store.products | orderBy:'-price'">
-				<h3>
-					{{product.name}}
-					<em class="pull-right">{{product.price | currency}}</em>
+				<h3 ng-include src="'templates/product-title.html'">
 					<img ng-src="./images/{{product.images[0].full}}"/>
 				</h3>
 				
