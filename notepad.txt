@@ -1,9 +1,11 @@
 <NotepadPlus>
     <Session activeView="0">
-        <mainView activeIndex="2">
-            <File firstVisibleLine="26" xOffset="0" scrollWidth="1352" startPos="178" endPos="178" selMode="0" lang="HTML" encoding="-1" filename="D:\SitesWWW\angular-GemStore\index.html" backupFilePath="" originalFileLastModifTimestamp="1403177505" />
-            <File firstVisibleLine="0" xOffset="0" scrollWidth="6136" startPos="546" endPos="546" selMode="0" lang="Javascript" encoding="-1" filename="D:\SitesWWW\angular-GemStore\javascripts\app.js" backupFilePath="" originalFileLastModifTimestamp="1403177215" />
-            <File firstVisibleLine="0" xOffset="0" scrollWidth="208" startPos="74" endPos="74" selMode="0" lang="CSS" encoding="-1" filename="D:\SitesWWW\angular-GemStore\stylesheets\style.css" backupFilePath="" originalFileLastModifTimestamp="1403177612" />
+        <mainView activeIndex="4">
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="1048" startPos="0" endPos="0" selMode="0" lang="Javascript" encoding="-1" filename="D:\SitesWWW\angular-GemStore\server.js" backupFilePath="" originalFileLastModifTimestamp="1403181291" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="1352" startPos="0" endPos="0" selMode="0" lang="HTML" encoding="-1" filename="D:\SitesWWW\angular-GemStore\public\index.html" backupFilePath="" originalFileLastModifTimestamp="1403180334" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="6136" startPos="0" endPos="0" selMode="0" lang="Javascript" encoding="-1" filename="D:\SitesWWW\angular-GemStore\public\javascripts\app.js" backupFilePath="" originalFileLastModifTimestamp="1403177215" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="368" startPos="0" endPos="0" selMode="0" lang="HTML" encoding="-1" filename="D:\SitesWWW\angular-GemStore\public\templates\product-title.html" backupFilePath="" originalFileLastModifTimestamp="1403179594" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="208" startPos="0" endPos="0" selMode="0" lang="CSS" encoding="-1" filename="D:\SitesWWW\angular-GemStore\public\stylesheets\style.css" backupFilePath="" originalFileLastModifTimestamp="1403179506" />
         </mainView>
         <subView activeIndex="0" />
     </Session>
