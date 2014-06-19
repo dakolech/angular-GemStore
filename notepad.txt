@@ -1,11 +1,14 @@
 <NotepadPlus>
     <Session activeView="0">
-        <mainView activeIndex="4">
+        <mainView activeIndex="2">
             <File firstVisibleLine="0" xOffset="0" scrollWidth="1048" startPos="0" endPos="0" selMode="0" lang="Javascript" encoding="-1" filename="D:\SitesWWW\angular-GemStore\server.js" backupFilePath="" originalFileLastModifTimestamp="1403181291" />
-            <File firstVisibleLine="0" xOffset="0" scrollWidth="1352" startPos="0" endPos="0" selMode="0" lang="HTML" encoding="-1" filename="D:\SitesWWW\angular-GemStore\public\index.html" backupFilePath="" originalFileLastModifTimestamp="1403180334" />
-            <File firstVisibleLine="0" xOffset="0" scrollWidth="6136" startPos="0" endPos="0" selMode="0" lang="Javascript" encoding="-1" filename="D:\SitesWWW\angular-GemStore\public\javascripts\app.js" backupFilePath="" originalFileLastModifTimestamp="1403177215" />
-            <File firstVisibleLine="0" xOffset="0" scrollWidth="368" startPos="0" endPos="0" selMode="0" lang="HTML" encoding="-1" filename="D:\SitesWWW\angular-GemStore\public\templates\product-title.html" backupFilePath="" originalFileLastModifTimestamp="1403179594" />
-            <File firstVisibleLine="0" xOffset="0" scrollWidth="208" startPos="0" endPos="0" selMode="0" lang="CSS" encoding="-1" filename="D:\SitesWWW\angular-GemStore\public\stylesheets\style.css" backupFilePath="" originalFileLastModifTimestamp="1403179506" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="208" startPos="178" endPos="178" selMode="0" lang="CSS" encoding="-1" filename="D:\SitesWWW\angular-GemStore\public\stylesheets\style.css" backupFilePath="" originalFileLastModifTimestamp="1403187915" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="6136" startPos="3496" endPos="3496" selMode="0" lang="Javascript" encoding="-1" filename="D:\SitesWWW\angular-GemStore\public\javascripts\app.js" backupFilePath="" originalFileLastModifTimestamp="1403188984" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="480" startPos="66" endPos="66" selMode="0" lang="Javascript" encoding="-1" filename="D:\SitesWWW\angular-GemStore\public\javascripts\products.js" backupFilePath="" originalFileLastModifTimestamp="1403188059" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="1352" startPos="872" endPos="872" selMode="0" lang="HTML" encoding="-1" filename="D:\SitesWWW\angular-GemStore\public\index.html" backupFilePath="" originalFileLastModifTimestamp="1403188098" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="456" startPos="41" endPos="41" selMode="0" lang="HTML" encoding="-1" filename="D:\SitesWWW\angular-GemStore\public\templates\product-title.html" backupFilePath="" originalFileLastModifTimestamp="1403187846" />
+            <File firstVisibleLine="1" xOffset="0" scrollWidth="1352" startPos="741" endPos="741" selMode="0" lang="HTML" encoding="-1" filename="D:\SitesWWW\angular-GemStore\public\templates\product-panels.html" backupFilePath="" originalFileLastModifTimestamp="1403188458" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="736" startPos="294" endPos="294" selMode="0" lang="HTML" encoding="-1" filename="D:\SitesWWW\angular-GemStore\public\templates\product-gallery.html" backupFilePath="" originalFileLastModifTimestamp="1403187736" />
         </mainView>
         <subView activeIndex="0" />
     </Session>
