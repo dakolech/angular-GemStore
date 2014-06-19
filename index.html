@@ -2,19 +2,49 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.min.css" />
 	</head>
-	<body>
+	<body ng-controller="StoreController as store">
+		<ul class="list-group" style="width:600px">
+			<li class="list-group-item" ng-repeat="product in store.products | orderBy:'-price'">
+				<h3>
+					{{product.name}}
+					<em class="pull-right">{{product.price | currency}}</em>
+					<img ng-src="./images/{{product.images[0].full}}"/>
+				</h3>
+				
+				<section ng-controller="PanelController as panel">
+					<ul class="nav nav-pills">
+						<li ng-class="{ active:panel.isSelected(1) }"> 
+							<a href ng-click="panel.selectTab(1)">Description</a> 
+						</li>
+						<li ng-class="{ active:panel.isSelected(2) }"> 
+							<a href ng-click="panel.selectTab(2)">Specifications</a> 
+						</li>
+						<li ng-class="{ active:panel.isSelected(3) }"> 
+							<a href ng-click="panel.selectTab(3)">Reviews</a> 
+						</li>
+					</ul>
+
+					<div class="panel" ng-show="panel.isSelected(1)">
+						<h4>Description</h4>
+						<p>{{product.description}}</p>
+					</div>
+					<div class="panel" ng-show="panel.isSelected(2)">
+						<h4>Specifications</h4>
+						<blockquote>None yet</blockquote>
+					</div>
+					<div class="panel" ng-show="panel.isSelected(3)">
+						<h4>Reviews</h4>
+						<blockquote>None yet</blockquote
+					</div>
+				</section>
+				
+			</li>
+		</ul>
+		
+		
+
+		
 		<script type="text/javascript" src="javascripts/angular.min.js"></script>
 		<script type="text/javascript" src="javascripts/app.js"></script>
-		
-		<p>
-			{{"hello" + " you"}}
-		</p>
-		
-		<div ng-controller="StoreController as store">
-			<h1> {{store.product.name}} </h1>
-			<h2> ${{store.product.price}} </h2>
-			<p> {{store.product.description}} </p>
-		</div>
-		
 	</body>
 </html>
