@@ -7,7 +7,7 @@
 		
 		store.products = [ ];
 		
-		$http.get('/products.json').success(function(data){
+		$http.get('/data/products.json').success(function(data){
 			store.products = data;
 			console.log("JSON load success.");
 		});
@@ -33,14 +33,15 @@
 		};
 	});
 	
-	app.controller("ReviewController", function(){
+	app.controller("ReviewController", ['$http', function($http) {
 		this.review = {};
 		
 		this.addReview = function(product) {
 			product.reviews.push(this.review);
+			
 			this.review = {};
 		};
-	});
+	}]);
 	
 	
 })();

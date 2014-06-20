@@ -1,0 +1,14 @@
+[
+	{
+		"id": 1,
+		"stars": 5,
+		"body": "I love this product!asd",
+		"author": "joe@thomas.com"
+	},
+	{
+		"id": 2,
+		"stars": 1,
+		"body": "This product sucksasd",
+		"author": "tim@hater.com"
+	}
+]
