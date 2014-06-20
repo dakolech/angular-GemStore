@@ -1,6 +1,6 @@
 [
 	{
-		"id": 01,
+		"id": 1,
 		"name": "Dodecahedron",
 		"price": 2.95,
 		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vestibulum risus eget convallis aliquam. Nunc accumsan lorem eget risus aliquam, pharetra ultrices sem dapibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin cursus aliquam purus, a faucibus ligula fermentum eget. Phasellus quis convallis tortor. Quisque dictum nisi vel molestie rutrum. Vestibulum vitae mauris ut magna interdum ultricies. Donec et placerat purus. Donec ornare varius ligula eu sodales. Donec eget rhoncus magna, in pharetra dolor. Aenean id lacinia lorem, et hendrerit felis. Nunc volutpat lectus non purus ultrices lobortis. Ut ornare volutpat lorem quis placerat. Nunc vitae magna sed nibh tempus tempus.",
@@ -35,7 +35,7 @@
 			]
 	},
 	{
-		"id": 02,
+		"id": 2,
 		"name": "Pentagonal Gem",
 		"price": 5,
 		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vestibulum risus eget convallis aliquam. Nunc accumsan lorem eget risus aliquam, pharetra ultrices sem dapibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin cursus aliquam purus, a faucibus ligula fermentum eget. Phasellus quis convallis tortor. Quisque dictum nisi vel molestie rutrum. Vestibulum vitae mauris ut magna interdum ultricies. Donec et placerat purus. Donec ornare varius ligula eu sodales. Donec eget rhoncus magna, in pharetra dolor. Aenean id lacinia lorem, et hendrerit felis. Nunc volutpat lectus non purus ultrices lobortis. Ut ornare volutpat lorem quis placerat. Nunc vitae magna sed nibh tempus tempus.",
