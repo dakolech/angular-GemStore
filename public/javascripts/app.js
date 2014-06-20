@@ -10,7 +10,8 @@
 		$http.get('/data/products.json').success(function(data){
 			store.products = data;
 			console.log("JSON load success.");
-		});
+		});		
+		
 	}]);
 	
 	app.controller("PanelController", function(){
@@ -41,7 +42,10 @@
 			
 			this.review = {};
 		};
+	
 	}]);
+	
+	
 	
 	
 })();
