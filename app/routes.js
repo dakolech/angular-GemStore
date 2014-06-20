@@ -1,56 +1,58 @@
-var Todo = require('./models/todo');
+var Product = require('./models/product');
 
 module.exports = function(app) {
 
 	// api ---------------------------------------------------------------------
-	// get all todos
-	app.get('/api/todos', function(req, res) {
+	// get all products
+	app.get('/api/products', function(req, res) {
 
-		// use mongoose to get all todos in the database
-		Todo.find(function(err, todos) {
+		// use mongoose to get all products in the database
+		Product.find(function(err, products) {
 
 			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
 			if (err)
 				res.send(err)
 
-			res.json(todos); // return all todos in JSON format
+			res.json(products); // return all products in JSON format
 		});
 	});
 
-	// create todo and send back all todos after creation
-	app.post('/api/todos', function(req, res) {
+	// create product and send back all products after creation
+	app.post('/api/products', function(req, res) {
 
-		// create a todo, information comes from AJAX request from Angular
-		Todo.create({
-			text : req.body.text,
-			done : false
-		}, function(err, todo) {
+		// create a product, information comes from AJAX request from Angular
+		Product.create({
+			name : req.body.name,
+			price : req.body.price,
+			description : req.body.description,
+			canPurchase : req.body.canPurchase
+		}, function(err, product) {
 			if (err)
 				res.send(err);
 
-			// get and return all the todos after you create another
-			Todo.find(function(err, todos) {
+			// get and return all the products after you create another
+			Product.find(function(err, products) {
 				if (err)
 					res.send(err)
-				res.json(todos);
+				res.json(products);
 			});
 		});
 
 	});
 
-	// delete a todo
-	app.delete('/api/todos/:todo_id', function(req, res) {
-		Todo.remove({
-			_id : req.params.todo_id
-		}, function(err, todo) {
+	// delete a product
+	app.delete('/api/products/:product_id', function(req, res) {
+		Product.remove({
+			_id : req.params.product_id
+		}, function(err, product) {
 			if (err)
 				res.send(err);
 
-			// get and return all the todos after you create another
-			Todo.find(function(err, todos) {
+			// get and return all the products after you create another
+			Product.find(function(err, products) {
 				if (err)
 					res.send(err)
-				res.json(todos);
+				res.json(products);
 			});
 		});
 	});

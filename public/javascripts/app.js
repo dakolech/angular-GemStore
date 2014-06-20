@@ -2,8 +2,44 @@
 
 	var app = angular.module('store', ['store-products']);
 
-	app.controller('StoreController', function(){
-		this.products = gems;
+	app.controller('StoreController', function($scope, $http){
+		$scope.formData = {};
+		
+		$http.get('/api/products')
+			.success(function(data) {
+				$scope.products = data;
+				console.log(data);
+			})
+			.error(function(data) {
+				console.log('Error: ' + data);
+		});
+		
+		$scope.createProduct = function() {
+			$http.post('/api/products', $scope.formData)
+				.success(function(data) {
+					$scope.formData = {}; // clear the form so our user is ready to enter another
+					$scope.products = data;
+					console.log(data);
+				})
+				.error(function(data) {
+					console.log('Error: ' + data);
+				});
+		};
+		
+		$scope.deleteProduct = function(id) {
+			if (confirm("Are you sure to delete this product?")){
+				$http.delete('/api/products/' + id)
+					.success(function(data) {
+						$scope.products = data;
+						console.log(data);
+					})
+					.error(function(data) {
+						console.log('Error: ' + data);
+					});
+			}
+		};
+		
+		
 	});
 	
 	app.controller("PanelController", function(){
@@ -17,14 +53,14 @@
 			return this.tab === checkTab;
 		};
 	});
-	
+	/*
 	app.controller('GalleryController', function(){
 		this.current = 0;
 		
 		this.setCurrent = function(imageNumber){
 		  this.current = imageNumber || 0;
 		};
-	});
+	});*/
 	
 	app.controller("ReviewController", function(){
 		this.review = {};

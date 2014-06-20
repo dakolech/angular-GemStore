@@ -1,0 +1,40 @@
+<html ng-app="store">
+	<head>
+		<title>GemStore</title>
+		<link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="stylesheets/style.css" />
+	</head>
+	<body ng-controller="StoreController as store">
+	
+		<div class="row">
+			<div class="col-sm-8 col-sm-offset-2 text-center">
+				<form>
+					<div class="form-group">
+
+						<!-- BIND THIS VALUE TO formData.name IN ANGULAR -->
+						<input type="text" class="form-control input-lg text-center" placeholder="Name" ng-model="formData.name">
+						<input type="number" step="any"  class="form-control input-lg text-center" placeholder="Price" ng-model="formData.price">
+						<input type="text" class="form-control input-lg text-center" placeholder="Description" ng-model="formData.description">
+					</div>
+
+					<!-- createProduct() WILL CREATE NEW PRODUCT -->
+					<button type="submit" class="btn btn-primary btn-lg" ng-click="createProduct()">Add</button>
+				</form>
+			</div>
+		</div>
+		{{ products.length }}
+		<ul class="list-group" style="width:600px" class="pull-center">
+			<li class="list-group-item" ng-repeat="product in products">
+				<a href class="pull-right" ng-click="deleteProduct(product._id)"> x </a><br>
+				<h3 product-title></h3>
+				
+				<section product-panels ng-controller="PanelController as panel"></section>
+				
+			</li>
+		</ul>
+
+		<script type="text/javascript" src="javascripts/angular.min.js"></script>
+		<script type="text/javascript" src="javascripts/app.js"></script>
+		<script type="text/javascript" src="javascripts/products.js"></script>
+	</body>
+</html>
