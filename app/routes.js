@@ -20,7 +20,9 @@ module.exports = function(app) {
 	// create product and send back all products after creation
 	app.post('/api/products', function(req, res) {
 		console.log(req.body.id);
-		if (req.body.create===true) {
+		
+		switch(req.body.what) {		
+		case 'create':
 			// create a product, information comes from AJAX request from Angular
 			Product.create({
 				name : req.body.name,
@@ -38,7 +40,9 @@ module.exports = function(app) {
 					res.json(products);
 				});
 			});
-		} else {
+			break;
+			
+		case 'edit':
 			console.log(req.body.editing);
 			Product.update({
 				_id : req.body.id
@@ -55,6 +59,28 @@ module.exports = function(app) {
 				});
 
 			});
+			break;	
+		
+		case 'addReview':
+			console.log(req.body.stars);
+			console.log(req.body.body);
+			console.log(req.body.author);
+			Product.findByIdAndUpdate(
+				req.body.id,
+				{$push: {reviews: {stars: req.body.stars, body: req.body.body, author: req.body.author}}},
+				{safe: true, upsert: true}, function(err, product) {
+				if (err)
+					res.send(err);
+					
+				Product.find(function(err, products) {
+					if (err)
+						res.send(err)
+					res.json(products);
+				});
+
+			});
+			break;
+			
 		}
 	});
 	

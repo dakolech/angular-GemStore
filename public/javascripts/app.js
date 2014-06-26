@@ -1,6 +1,8 @@
 (function(){
 
 	var app = angular.module('store', ['store-products']);
+	
+	var postdata;
 
 	app.controller('StoreController', function($scope, $http){
 		$scope.formData = {};
@@ -15,21 +17,10 @@
 		});
 		
 		$scope.createProduct = function() {
-			$scope.formData.create = true;
+			$scope.formData.what = 'create';
 			$http.post('/api/products', $scope.formData)
 				.success(function(data) {
 					$scope.formData = {}; // clear the form so our user is ready to enter another
-					$scope.products = data;
-					console.log(data);
-				})
-				.error(function(data) {
-					console.log('Error: ' + data);
-				});
-		};
-		
-		$scope.updateProduct = function(id) {
-			$http.post('/api/products/'+id, $scope.formData)
-				.success(function(data) {
 					$scope.products = data;
 					console.log(data);
 				})
@@ -53,14 +44,12 @@
 		
 		$scope.startEditProduct = function(id) {
 			$scope.formData.editing = true;
-			$scope.formData.create = false;
+			$scope.formData.what = 'edit';
 			$scope.formData.id = id;
 			$http.post('/api/products/', $scope.formData)
 				.success(function(data) {
 					$scope.products = data;
 					console.log(data);
-					//console.log(id);
-					console.log($scope.formData.id);
 				})
 				.error(function(data) {
 					console.log('Error: ' + data);
@@ -69,14 +58,12 @@
 		
 		$scope.stopEditProduct = function(id) {
 			$scope.formData.editing = false;
-			$scope.formData.create = false;
+			$scope.formData.what = 'edit';
 			$scope.formData.id = id;		
 			$http.post('/api/products/', $scope.formData)
 				.success(function(data) {
 					$scope.products = data;
 					console.log(data);
-					//console.log(id);
-					console.log($scope.formData.id);
 				})
 				.error(function(data) {
 					console.log('Error: ' + data);
@@ -86,15 +73,15 @@
 		
 	});
 	
-	app.controller("PanelController", function(){
-		this.tab = 1;
+	app.controller("PanelController", function($scope, $http){
+		$scope.tab = 1;
 		
-		this.selectTab = function(setTab) {
-			this.tab = setTab;
+		$scope.selectTab = function(setTab) {
+			$scope.tab = setTab;
 		};
 		
-		this.isSelected = function(checkTab){
-			return this.tab === checkTab;
+		$scope.isSelected = function(checkTab){
+			return $scope.tab === checkTab;
 		};
 	});
 	/*
@@ -106,12 +93,24 @@
 		};
 	});*/
 	
-	app.controller("ReviewController", function(){
-		this.review = {};
+	app.controller("ReviewController", function($scope, $http){
+		$scope.review = {};
 		
-		this.addReview = function(product) {
-			product.reviews.push(this.review);
-			this.review = {};
+		$scope.addReview = function(product) {
+			$scope.review.id = product._id;	
+			$scope.review.what = 'addReview';
+			console.log($scope.review.id);
+			console.log($scope.review.body);
+			$http.post('/api/products/', $scope.review)
+				.success(function(data) {
+					$scope.products = data;
+					console.log(data);
+				})
+				.error(function(data) {
+					console.log('Error: ' + data);
+				});
+			
+			$scope.review = {};
 		};
 	});
 	
