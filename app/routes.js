@@ -19,26 +19,45 @@ module.exports = function(app) {
 
 	// create product and send back all products after creation
 	app.post('/api/products', function(req, res) {
-
-		// create a product, information comes from AJAX request from Angular
-		Product.create({
-			name : req.body.name,
-			price : req.body.price,
-			description : req.body.description,
-			canPurchase : req.body.canPurchase
-		}, function(err, product) {
-			if (err)
-				res.send(err);
-
-			// get and return all the products after you create another
-			Product.find(function(err, products) {
+		console.log(req.body.id);
+		if (req.body.create===true) {
+			// create a product, information comes from AJAX request from Angular
+			Product.create({
+				name : req.body.name,
+				price : req.body.price,
+				description : req.body.description,
+				canPurchase : req.body.canPurchase
+			}, function(err, product) {
 				if (err)
-					res.send(err)
-				res.json(products);
-			});
-		});
+					res.send(err);
 
+				// get and return all the products after you create another
+				Product.find(function(err, products) {
+					if (err)
+						res.send(err)
+					res.json(products);
+				});
+			});
+		} else {
+			console.log(req.body.editing);
+			Product.update({
+				_id : req.body.id
+				}, {
+				editing : req.body.editing
+			}, { multi: false }, function(err, product) {
+				if (err)
+					res.send(err);
+					
+				Product.find(function(err, products) {
+					if (err)
+						res.send(err)
+					res.json(products);
+				});
+
+			});
+		}
 	});
+	
 
 	// delete a product
 	app.delete('/api/products/:product_id', function(req, res) {

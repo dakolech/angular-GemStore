@@ -15,9 +15,21 @@
 		});
 		
 		$scope.createProduct = function() {
+			$scope.formData.create = true;
 			$http.post('/api/products', $scope.formData)
 				.success(function(data) {
 					$scope.formData = {}; // clear the form so our user is ready to enter another
+					$scope.products = data;
+					console.log(data);
+				})
+				.error(function(data) {
+					console.log('Error: ' + data);
+				});
+		};
+		
+		$scope.updateProduct = function(id) {
+			$http.post('/api/products/'+id, $scope.formData)
+				.success(function(data) {
 					$scope.products = data;
 					console.log(data);
 				})
@@ -37,6 +49,38 @@
 						console.log('Error: ' + data);
 					});
 			}
+		};
+		
+		$scope.startEditProduct = function(id) {
+			$scope.formData.editing = true;
+			$scope.formData.create = false;
+			$scope.formData.id = id;
+			$http.post('/api/products/', $scope.formData)
+				.success(function(data) {
+					$scope.products = data;
+					console.log(data);
+					//console.log(id);
+					console.log($scope.formData.id);
+				})
+				.error(function(data) {
+					console.log('Error: ' + data);
+				});
+		};
+		
+		$scope.stopEditProduct = function(id) {
+			$scope.formData.editing = false;
+			$scope.formData.create = false;
+			$scope.formData.id = id;		
+			$http.post('/api/products/', $scope.formData)
+				.success(function(data) {
+					$scope.products = data;
+					console.log(data);
+					//console.log(id);
+					console.log($scope.formData.id);
+				})
+				.error(function(data) {
+					console.log('Error: ' + data);
+				});
 		};
 		
 		

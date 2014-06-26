@@ -6,6 +6,7 @@ module.exports = mongoose.model('Product', {
 	added		: { type: Date, default: Date.now },
 	description	: String,
 	canPurchase	: Boolean,
+	editing		: Boolean,
 	reviews		: [{
 					stars 	: Number,
 					body 	: String,

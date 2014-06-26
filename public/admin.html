@@ -25,7 +25,17 @@
 		{{ products.length }}
 		<ul class="list-group" style="width:600px" class="pull-center">
 			<li class="list-group-item" ng-repeat="product in products">
+				<a href  ng-click="startEditProduct(product._id)"> Edit </a>
+				<a href  ng-click="stopEditProduct(product._id)">  Stop </a>
 				<a href class="pull-right" ng-click="deleteProduct(product._id)"> x </a><br>
+				<div class="panel" ng-show="product.editing">
+					<h4>Editing</h4>
+				</div>
+				
+				<div class="panel" ng-hide="product.editing">
+					<h4>Stop</h4>
+				</div>
+				
 				<h3 product-title></h3>
 				
 				<section product-panels ng-controller="PanelController as panel"></section>
