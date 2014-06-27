@@ -69,14 +69,15 @@
 				});
 		};
 		
-		$scope.addReview = function(id) {
-			$scope.formReview.id = id;	
+		$scope.addReview = function(product) {
+			$scope.formReview.id = product._id;	
 			$scope.formReview.what = 'addReview';
-			console.log($scope.formReview.id);
-			console.log($scope.formReview.body);
+			var localReview=$scope.formReview;
+			console.log(localReview);
 			$http.post('/api/products/', $scope.formReview)
 				.success(function(data) {
-					$scope.products = data;
+					//$scope.products = data;
+					product.reviews.push(localReview);
 					console.log(data);
 				})
 				.error(function(data) {

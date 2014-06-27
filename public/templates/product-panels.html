@@ -27,7 +27,7 @@
 		<cite>by: {{review.author}}</cite>
 	</blockquote>
 	
-	<form name="reviewForm" ng-submit="reviewForm.$valid && addReview(product._id)" novalidate>
+	<form name="reviewForm" ng-submit="reviewForm.$valid && addReview(product)" novalidate>
 		<blockquote>
 			<b>Stars: {{formReview.stars}}</b><br>
 			{{formReview.body}}<br>
