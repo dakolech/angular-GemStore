@@ -1,11 +1,10 @@
 (function(){
 
 	var app = angular.module('store', ['store-products']);
-	
-	var postdata;
 
 	app.controller('StoreController', function($scope, $http){
 		$scope.formData = {};
+		$scope.formReview = {};
 		
 		$http.get('/api/products')
 			.success(function(data) {
@@ -70,6 +69,23 @@
 				});
 		};
 		
+		$scope.addReview = function(id) {
+			$scope.formReview.id = id;	
+			$scope.formReview.what = 'addReview';
+			console.log($scope.formReview.id);
+			console.log($scope.formReview.body);
+			$http.post('/api/products/', $scope.formReview)
+				.success(function(data) {
+					$scope.products = data;
+					console.log(data);
+				})
+				.error(function(data) {
+					console.log('Error: ' + data);
+				});
+			
+			$scope.formReview = {};
+		};
+		
 		
 	});
 	
@@ -93,26 +109,6 @@
 		};
 	});*/
 	
-	app.controller("ReviewController", function($scope, $http){
-		$scope.review = {};
-		
-		$scope.addReview = function(product) {
-			$scope.review.id = product._id;	
-			$scope.review.what = 'addReview';
-			console.log($scope.review.id);
-			console.log($scope.review.body);
-			$http.post('/api/products/', $scope.review)
-				.success(function(data) {
-					$scope.products = data;
-					console.log(data);
-				})
-				.error(function(data) {
-					console.log('Error: ' + data);
-				});
-			
-			$scope.review = {};
-		};
-	});
 	
 
 	

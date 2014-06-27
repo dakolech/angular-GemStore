@@ -24,6 +24,7 @@ module.exports = function(app) {
 		switch(req.body.what) {		
 		case 'create':
 			// create a product, information comes from AJAX request from Angular
+			console.log('Product created: '+req.body.name+', '+req.body.price+' id: '+req.body.id);
 			Product.create({
 				name : req.body.name,
 				price : req.body.price,
@@ -62,9 +63,7 @@ module.exports = function(app) {
 			break;	
 		
 		case 'addReview':
-			console.log(req.body.stars);
-			console.log(req.body.body);
-			console.log(req.body.author);
+			console.log('Review: '+req.body.stars+' stars, '+req.body.body+ ', by '+req.body.author+' added to: '+req.body.id);
 			Product.findByIdAndUpdate(
 				req.body.id,
 				{$push: {reviews: {stars: req.body.stars, body: req.body.body, author: req.body.author}}},
