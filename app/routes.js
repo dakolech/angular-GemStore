@@ -100,13 +100,13 @@ module.exports = function(app) {
 
 			} else {
 
-			  var newPath = __dirname + "/images/fullsize/" + imageName;
+			  var newPath ="./images/fullsize/" + imageName;
 
 			  // write file to images/fullsize folder
 			  fs.writeFile(newPath, data, function (err) {
 				console.log(newPath);
 				// let's see it
-				//res.redirect("/images/fullsize/" + imageName);
+				res.redirect("/images/fullsize/" + imageName);
 
 			  });
 			}
@@ -116,7 +116,7 @@ module.exports = function(app) {
 	
 	app.get('/images/fullsize/:file', function (req, res){
 		file = req.params.file;
-		var img = fs.readFileSync(__dirname + "/images/fullsize/" + file);
+		var img = fs.readFileSync("./images/fullsize/" + file);
 		res.writeHead(200, {'Content-Type': 'image/jpg' });
 		res.end(img, 'binary');
 
