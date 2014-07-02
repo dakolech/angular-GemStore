@@ -1,4 +1,5 @@
 var Product = require('./models/product');
+	var fs = require('fs');
 
 module.exports = function(app) {
 
@@ -83,7 +84,45 @@ module.exports = function(app) {
 		}
 	});
 	
+	app.post('/api/images/', function(req, res) {
+		console.log(req.files.file.name);
+		
+		fs.readFile(req.files.file.path, function (err, data) {
 
+			var imageName = req.files.file.name
+
+			/// If there's an error
+			if(!imageName){
+
+				console.log("There was an error")
+				res.redirect("/");
+				res.end();
+
+			} else {
+
+			  var newPath = __dirname + "/images/fullsize/" + imageName;
+
+			  // write file to images/fullsize folder
+			  fs.writeFile(newPath, data, function (err) {
+				console.log(newPath);
+				// let's see it
+				//res.redirect("/images/fullsize/" + imageName);
+
+			  });
+			}
+		});
+	
+	});
+	
+	app.get('/images/fullsize/:file', function (req, res){
+		file = req.params.file;
+		var img = fs.readFileSync(__dirname + "/images/fullsize/" + file);
+		res.writeHead(200, {'Content-Type': 'image/jpg' });
+		res.end(img, 'binary');
+
+	});
+	
+	
 	// delete a product
 	app.delete('/api/products/:product_id', function(req, res) {
 		Product.remove({

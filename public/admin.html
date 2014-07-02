@@ -23,8 +23,7 @@
 			</div>
 		</div>
 
-		<input type="file" ng-file-select="onFileSelect($files)" multiple>
-		<input type="file" accept="image/*" image="image"/> <img ng-show="image" ng-src="{{image.url}}" type="{{image.file.type}}" />
+		<input type="file" accept="image/*" image="image" onchange="angular.element(this).scope().uploadImage(this.files)" multiple /> <img ng-show="image" ng-src="{{image.url}}" type="{{image.file.type}}" />
 
 		{{ products.length }}
 		<ul class="list-group" style="width:600px" class="pull-center">
