@@ -87,13 +87,14 @@
 			$scope.formReview = {};
 		};
 		
-		$scope.uploadImage = function(files) {
+		$scope.uploadImage = function(files,id) {
 			console.log(files[0]);
 			for (var i = 0; i < files.length; i++) {
 				
 				var fd = new FormData();
 				//Take the first selected file
 				fd.append("file", files[i]);
+				fd.id=id;
 				console.log(fd);
 				$http.post('/api/images/', fd, {
 					withCredentials: true,
@@ -101,11 +102,11 @@
 					transformRequest: angular.identity
 				})
 				.success(function(data) {
-						//$scope.products = data;
-						//console.log(data);
+						$scope.products = data;
+						console.log(data);
 					})
 					.error(function(data) {
-						//console.log('Error: ' + data);
+						console.log('Error: ' + data);
 					});
 			}
 

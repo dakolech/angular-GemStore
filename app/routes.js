@@ -1,5 +1,10 @@
 var Product = require('./models/product');
-	var fs = require('fs');
+var fs = require('fs');
+var im = require('imagemagick'); 
+var easyimg = require('easyimage'); 
+im.identify.path = './identify.exe';
+im.convert.path = './convert.exe';
+
 
 module.exports = function(app) {
 
@@ -100,13 +105,39 @@ module.exports = function(app) {
 
 			} else {
 
-			  var newPath ="./images/fullsize/" + imageName;
+			  var newPath = './images/' + imageName;
+			  var thumbPath = './images/thumbs/' + imageName;
 
-			  // write file to images/fullsize folder
+			  // write file to images folder
 			  fs.writeFile(newPath, data, function (err) {
-				console.log(newPath);
+			  console.log(newPath,thumbPath);
+			  
+				/*im.resize({
+				  srcPath: newPath,
+				  dstPath: thumbPath,
+				  width:   200 
+				}, function(err, stdout, stderr){
+				  if (err) throw err
+				  console.log('resized image to fit within 200x200px');
+				});*/
+				
+				easyimg.rescrop(
+				  {
+					 src: newPath, dst: thumbPath,
+					 width:500, height:500,
+					 cropwidth:128, cropheight:128,
+					 x:0, y:0
+					 },
+				  function(err, image) {
+					 if (err) throw err;
+					 console.log('Resized and cropped: ' + image.width + ' x ' + image.height);
+				  }
+				);
+				 
+				
+				
 				// let's see it
-				res.redirect("/images/fullsize/" + imageName);
+				res.redirect("/images/" + imageName);
 
 			  });
 			}
@@ -114,9 +145,9 @@ module.exports = function(app) {
 	
 	});
 	
-	app.get('/images/fullsize/:file', function (req, res){
+	app.get('/images/:file', function (req, res){
 		file = req.params.file;
-		var img = fs.readFileSync("./images/fullsize/" + file);
+		var img = fs.readFileSync("./images/" + file);
 		res.writeHead(200, {'Content-Type': 'image/jpg' });
 		res.end(img, 'binary');
 

@@ -5,6 +5,7 @@ var express  = require('express');
 var app      = express(); 								// create our app w/ express
 var mongoose = require('mongoose'); 					// mongoose for mongodb
 
+
 // configuration =================
 
 mongoose.connect('mongodb://node:node@mongo.onmodulus.net:27017/uwO3mypu'); 	// connect to mongoDB database on modulus.io
