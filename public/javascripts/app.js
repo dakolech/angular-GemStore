@@ -111,6 +111,34 @@
 			}
 
 		};
+		
+		$scope.filesChanged = function(elm) {
+			$scope.files=elm.files
+			$scope.$apply();		
+		};
+		
+		$scope.upload = function() {
+			for (var i = 0; i < $scope.files.length; i++) {
+				
+				var fd = new FormData();
+				//Take the first selected file
+				fd.append("file", $scope.files[i]);
+				//fd.id=id;
+				//console.log(fd);
+				$http.post('/api/images/', fd, {
+					withCredentials: true,
+					headers: {'Content-Type': undefined },
+					transformRequest: angular.identity
+				})
+				.success(function(data) {
+						//$scope.products = data;
+						console.log(data);
+					})
+					.error(function(data) {
+						console.log('Error: ' + data);
+					});
+			}
+		};
 
 
 		
