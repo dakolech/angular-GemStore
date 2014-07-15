@@ -38,12 +38,11 @@
 				
 				<h3 product-title></h3>
 				
-				<input type="file" accept="image/*" image="image" onchange="angular.element(this).scope().uploadImage(this.files)" multiple /> 
-				
+			
 				<form>
-					<input type="file" accept="image/*" image="image" onchange="angular.element(this).scope().filesChanged(this)" multiple />
-					<button ng-click="upload()">Upload</button>
+					<input ng-model="formData.image"  type="file" accept="image/*" image="image" onchange="angular.element(this).scope().filesChanged(this)" multiple />
 					<li ng-repeat="file in files">{{file.name}}</li>
+					<button ng-click="upload(product._id)">Upload</button>
 				</form>
 				
 				<section product-panels ng-controller="PanelController"></section>

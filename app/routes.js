@@ -91,6 +91,8 @@ module.exports = function(app) {
 	
 	app.post('/api/images/', function(req, res) {
 		console.log(req.files.file.name);
+		//console.log(req);
+		console.log(req.body.id);
 		
 		fs.readFile(req.files.file.path, function (err, data) {
 
@@ -100,8 +102,11 @@ module.exports = function(app) {
 			if(!imageName){
 
 				console.log("There was an error")
-				res.redirect("/");
-				res.end();
+				Product.find(function(err, products) {
+					if (err)
+						res.send(err)
+					res.json(products);
+				});
 
 			} else {
 
@@ -132,10 +137,16 @@ module.exports = function(app) {
 				});
 				
 				// let's see it
-				res.redirect("/images/" + imageName);
+				//res.redirect("/images/" + imageName);
 
 			  });
 			}
+		});
+		
+		Product.find(function(err, products) {
+			if (err)
+				res.send(err)
+			res.json(products);
 		});
 	
 	});

@@ -87,44 +87,23 @@
 			$scope.formReview = {};
 		};
 		
-		$scope.uploadImage = function(files,id) {
-			console.log(files[0]);
-			for (var i = 0; i < files.length; i++) {
-				
-				var fd = new FormData();
-				//Take the first selected file
-				fd.append("file", files[i]);
-				fd.id=id;
-				console.log(fd);
-				$http.post('/api/images/', fd, {
-					withCredentials: true,
-					headers: {'Content-Type': undefined },
-					transformRequest: angular.identity
-				})
-				.success(function(data) {
-						$scope.products = data;
-						console.log(data);
-					})
-					.error(function(data) {
-						console.log('Error: ' + data);
-					});
-			}
-
-		};
 		
 		$scope.filesChanged = function(elm) {
 			$scope.files=elm.files
 			$scope.$apply();		
 		};
 		
-		$scope.upload = function() {
+		$scope.upload = function(id) {
 			for (var i = 0; i < $scope.files.length; i++) {
-				
+				console.log(id);
 				var fd = new FormData();
+
+				//console.log($scope.files[i]);
 				//Take the first selected file
 				fd.append("file", $scope.files[i]);
-				//fd.id=id;
-				//console.log(fd);
+				fd.append("id", id);
+				console.log(id);
+				
 				$http.post('/api/images/', fd, {
 					withCredentials: true,
 					headers: {'Content-Type': undefined },
@@ -133,11 +112,13 @@
 				.success(function(data) {
 						//$scope.products = data;
 						console.log(data);
-					})
-					.error(function(data) {
-						console.log('Error: ' + data);
-					});
+				})
+				.error(function(data) {
+					console.log('Error: ' + data);
+				});
 			}
+			$scope.formData = {};
+			$scope.files = {};
 		};
 
 
