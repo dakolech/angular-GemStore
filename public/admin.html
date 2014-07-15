@@ -23,7 +23,6 @@
 			</div>
 		</div>
 
-		{{ products.length }}
 		<ul class="list-group" style="width:600px" class="pull-center">
 			<li class="list-group-item" ng-repeat="product in products">
 				<a href  ng-click="startEditProduct(product._id)"> Edit </a>
@@ -38,7 +37,8 @@
 				</div>
 				
 				<h3 product-title></h3>
-				<input type="file" accept="image/*" image="image" onchange="angular.element(this).scope().uploadImage(this.files,product._id)" multiple /> 
+				
+				<input type="file" accept="image/*" image="image" onchange="angular.element(this).scope().uploadImage(this.files)" multiple /> 
 				
 				<section product-panels ng-controller="PanelController"></section>
 				

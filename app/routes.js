@@ -107,34 +107,29 @@ module.exports = function(app) {
 
 			  var newPath = './images/' + imageName;
 			  var thumbPath = './images/thumbs/' + imageName;
+			  var galleryPath = './images/gallerySize/' + imageName;
 
 			  // write file to images folder
 			  fs.writeFile(newPath, data, function (err) {
 			  console.log(newPath,thumbPath);
 			  
-				/*im.resize({
+				im.resize({
 				  srcPath: newPath,
 				  dstPath: thumbPath,
 				  width:   200 
 				}, function(err, stdout, stderr){
 				  if (err) throw err
 				  console.log('resized image to fit within 200x200px');
-				});*/
+				});
 				
-				easyimg.rescrop(
-				  {
-					 src: newPath, dst: thumbPath,
-					 width:500, height:500,
-					 cropwidth:128, cropheight:128,
-					 x:0, y:0
-					 },
-				  function(err, image) {
-					 if (err) throw err;
-					 console.log('Resized and cropped: ' + image.width + ' x ' + image.height);
-				  }
-				);
-				 
-				
+				im.resize({
+				  srcPath: newPath,
+				  dstPath: galleryPath,
+				  width:   500 
+				}, function(err, stdout, stderr){
+				  if (err) throw err
+				  console.log('resized image to fit within 500x500px');
+				});
 				
 				// let's see it
 				res.redirect("/images/" + imageName);
