@@ -25,35 +25,46 @@
 
 		<ul class="list-group" style="width:600px" class="pull-center">
 			<li class="list-group-item" ng-repeat="product in products">
+				<a href  ng-click="stopEditProduct(product._id)">  Preview </a>
 				<a href  ng-click="startEditProduct(product._id)"> Edit </a>
-				<a href  ng-click="stopEditProduct(product._id)">  Stop </a>
 				
-				<a href class="pull-right" ng-click="deleteProduct(product._id)"> x </a><br>
+				<section  ng-controller="AdminEditPanelController">
 				
-				<div class="panel" ng-show="product.editing">
-					<h4>Editing</h4>
-				</div>
-				
-				<div class="panel" ng-hide="product.editing">
-					<h4>Stop</h4>
-				</div>
-				
-				<h3 product-title></h3>
-				
-			
-				<form>
-					<input ng-model="formData.image"  type="file" accept="image/*" image="image" onchange="angular.element(this).scope().imagesChanged(this)" multiple />
-					<li ng-repeat="file in files">{{file.name}}</li>
-					<button ng-click="addImages(product._id)">Upload</button>
-				</form>
-				
-				<div class="list-group-item" ng-repeat="image in product.images">
-					<a href class="pull-right" ng-click="deleteImage(product._id, image)"> x </a><br>
-					{{image}} 
-					<img ng-src="./images/thumbs/{{image}}" />	
-				</div>
-				
-				<section product-panels ng-controller="PanelController"></section>
+					<ul class="nav nav-pills">
+						<li ng-class="{ active:isSelected(1) }"> 
+							<a href ng-click="selectTab(1)">Preview</a> 
+						</li>
+						<li ng-class="{ active:isSelected(2) }"> 
+							<a href ng-click="selectTab(2)">Edit</a> 
+						</li>
+					</ul>
+					
+					<div class="panel" ng-show="isSelected(1)">
+						<h4>Preview</h4>
+						<h3 product-title></h3>
+						<section product-gallery ng-controller="GalleryController as gallery"></section>
+						<section product-panels ng-controller="PanelController"></section>
+					</div>
+					
+					<div class="panel" ng-show="isSelected(2)">
+						<a href class="pull-right" ng-click="deleteProduct(product._id)"> x </a><br>
+						<h4>Editing</h4>
+						<h3 product-title></h3>
+						<form>
+							<input ng-model="formData.image"  type="file" accept="image/*" image="image" onchange="angular.element(this).scope().imagesChanged(this)" multiple />
+							<li ng-repeat="file in files">{{file.name}}</li>
+							<button ng-click="addImages(product._id)">Upload</button>
+						</form>
+						
+						<div class="list-group-item" ng-repeat="image in product.images">
+							<a href class="pull-right" ng-click="deleteImage(product._id, image)"> x </a><br>
+							{{image}} 
+							<img ng-src="./images/thumbs/{{image}}" />	
+						</div>
+						
+					</div>
+					
+				</section>					
 				
 			</li>
 		</ul>

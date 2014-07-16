@@ -157,6 +157,18 @@
 		};
 	});
 	
+	app.controller("AdminEditPanelController", function($scope, $http){
+		$scope.tab = 1;
+		
+		$scope.selectTab = function(setTab) {
+			$scope.tab = setTab;
+		};
+		
+		$scope.isSelected = function(checkTab){
+			return $scope.tab === checkTab;
+		};
+	});
+	
 	app.controller('GalleryController', function(){
 		this.current = 0;
 		
