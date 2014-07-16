@@ -27,7 +27,9 @@
 			<li class="list-group-item" ng-repeat="product in products">
 				<a href  ng-click="startEditProduct(product._id)"> Edit </a>
 				<a href  ng-click="stopEditProduct(product._id)">  Stop </a>
+				
 				<a href class="pull-right" ng-click="deleteProduct(product._id)"> x </a><br>
+				
 				<div class="panel" ng-show="product.editing">
 					<h4>Editing</h4>
 				</div>
