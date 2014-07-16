@@ -11,5 +11,6 @@ module.exports = mongoose.model('Product', {
 					stars 	: Number,
 					body 	: String,
 					author 	: String
-				  }]
+				  }],
+	images		: [String]
 });

@@ -1,14 +1,13 @@
 <div ng-show="product.images.length">
 	<div class="img-wrap">
-		<img ng-src="./images/{{product.images[gallery.current].full}}" />
+		<img ng-src="./images/gallerySize/{{product.images[gallery.current]}}" />
 	</div>
 	<ul class="img-thumbnails clearfix">
 		<li class="small-image pull-left thumbnail" ng-repeat="image in product.images">
 			<a href ng-click="gallery.setCurrent($index)">
-				<img ng-src="./images/{{image.thumb}}" />
+				<img ng-src="./images/thumbs/{{image}}" />
 			</a>
 		</li>
 	</ul>
 </div>
 
-<section product-gallery ng-controller="GalleryController as gallery"></section>

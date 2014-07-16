@@ -5,6 +5,7 @@
 	app.controller('StoreController', function($scope, $http){
 		$scope.formData = {};
 		$scope.formReview = {};
+		$scope.formImage = {};
 		
 		$http.get('/api/products')
 			.success(function(data) {
@@ -88,12 +89,12 @@
 		};
 		
 		
-		$scope.filesChanged = function(elm) {
+		$scope.imagesChanged = function(elm) {
 			$scope.files=elm.files
 			$scope.$apply();		
 		};
 		
-		$scope.upload = function(id) {
+		$scope.addImages = function(id) {
 			for (var i = 0; i < $scope.files.length; i++) {
 				console.log(id);
 				var fd = new FormData();
@@ -110,7 +111,7 @@
 					transformRequest: angular.identity
 				})
 				.success(function(data) {
-						//$scope.products = data;
+						$scope.products = data;
 						console.log(data);
 				})
 				.error(function(data) {
@@ -119,6 +120,24 @@
 			}
 			$scope.formData = {};
 			$scope.files = {};
+		};
+		
+		$scope.deleteImage = function(id, name) {
+			if (confirm("Are you sure to delete this image?")){
+				$scope.formImage.id = id;
+				$scope.formImage.name = name;
+				$scope.formImage.what = 'deleteImage';
+				$http.post('/api/products/', $scope.formImage)
+					.success(function(data) {
+						$scope.products = data;
+						console.log(data);
+					})
+					.error(function(data) {
+						console.log('Error: ' + data);
+					});
+				
+				$scope.formImage = {};
+				}
 		};
 
 
@@ -137,14 +156,14 @@
 			return $scope.tab === checkTab;
 		};
 	});
-	/*
+	
 	app.controller('GalleryController', function(){
 		this.current = 0;
 		
 		this.setCurrent = function(imageNumber){
 		  this.current = imageNumber || 0;
 		};
-	});*/
+	});
 	
 	
 

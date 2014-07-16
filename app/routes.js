@@ -85,18 +85,48 @@ module.exports = function(app) {
 
 			});
 			break;
+
+		case 'deleteImage':			
+			Product.findByIdAndUpdate(
+				req.body.id,
+				{$pull: {images: req.body.name}},
+				{safe: true, upsert: true}, function(err, product) {
+				if (err)
+					res.send(err);
+					
+				Product.find(function(err, products) {
+					if (err)
+						res.send(err)
+					res.json(products);
+				});
+
+			});
+			
+			fs.unlink('./public/images/' + req.body.name, function (err) {
+				if (err) throw err;
+					console.log('successfully deleted images/'+req.body.name);
+			});
+			fs.unlink('./public/images/thumbs/' + req.body.name, function (err) {
+				if (err) throw err;
+					console.log('successfully deleted images/thumbs/'+req.body.name);
+			});
+			fs.unlink('./public/images/gallerySize/' + req.body.name, function (err) {
+				if (err) throw err;
+					console.log('successfully deleted images/gallerySize/'+req.body.name);
+			});
+			
+			console.log('Delete image: '+req.body.name+' from: '+req.body.id);
+			break;
 			
 		}
 	});
 	
 	app.post('/api/images/', function(req, res) {
-		console.log(req.files.file.name);
-		//console.log(req);
-		console.log(req.body.id);
+		console.log("Added image ("+req.files.file.name+") to "+req.body.id);
 		
 		fs.readFile(req.files.file.path, function (err, data) {
 
-			var imageName = req.files.file.name
+			var imageName = req.files.file.name;
 
 			/// If there's an error
 			if(!imageName){
@@ -110,18 +140,18 @@ module.exports = function(app) {
 
 			} else {
 
-			  var newPath = './images/' + imageName;
-			  var thumbPath = './images/thumbs/' + imageName;
-			  var galleryPath = './images/gallerySize/' + imageName;
+			  var newPath = './public/images/' + imageName;
+			  var thumbPath = './public/images/thumbs/' + imageName;
+			  var galleryPath = './public/images/gallerySize/' + imageName;
 
 			  // write file to images folder
 			  fs.writeFile(newPath, data, function (err) {
-			  console.log(newPath,thumbPath);
+			  //console.log(newPath,thumbPath);
 			  
 				im.resize({
 				  srcPath: newPath,
 				  dstPath: thumbPath,
-				  width:   200 
+				  height:   100 
 				}, function(err, stdout, stderr){
 				  if (err) throw err
 				  console.log('resized image to fit within 200x200px');
@@ -130,7 +160,7 @@ module.exports = function(app) {
 				im.resize({
 				  srcPath: newPath,
 				  dstPath: galleryPath,
-				  width:   500 
+				  height:   400 
 				}, function(err, stdout, stderr){
 				  if (err) throw err
 				  console.log('resized image to fit within 500x500px');
@@ -143,10 +173,19 @@ module.exports = function(app) {
 			}
 		});
 		
-		Product.find(function(err, products) {
+		Product.findByIdAndUpdate(
+			req.body.id,
+			{$push: {images: req.files.file.name}},
+			{safe: true, upsert: true}, function(err, product) {
 			if (err)
-				res.send(err)
-			res.json(products);
+				res.send(err);
+				
+			Product.find(function(err, products) {
+				if (err)
+					res.send(err)
+				res.json(products);
+			});
+
 		});
 	
 	});

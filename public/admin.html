@@ -40,10 +40,16 @@
 				
 			
 				<form>
-					<input ng-model="formData.image"  type="file" accept="image/*" image="image" onchange="angular.element(this).scope().filesChanged(this)" multiple />
+					<input ng-model="formData.image"  type="file" accept="image/*" image="image" onchange="angular.element(this).scope().imagesChanged(this)" multiple />
 					<li ng-repeat="file in files">{{file.name}}</li>
-					<button ng-click="upload(product._id)">Upload</button>
+					<button ng-click="addImages(product._id)">Upload</button>
 				</form>
+				
+				<div class="list-group-item" ng-repeat="image in product.images">
+					<a href class="pull-right" ng-click="deleteImage(product._id, image)"> x </a><br>
+					{{image}} 
+					<img ng-src="./images/thumbs/{{image}}" />	
+				</div>
 				
 				<section product-panels ng-controller="PanelController"></section>
 				
