@@ -1,0 +1,24 @@
+<html ng-app="store">
+	<head>
+		<title>GemStore</title>
+		<link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="stylesheets/style.css" />
+	</head>
+	<body ng-controller="StoreController as store">
+	
+		<ul class="list-group" style="width:600px" class="pull-center">
+			<li class="list-group-item" ng-repeat="product in products | orderBy:'price'">
+				
+				<h3 product-title></h3>
+				<section product-gallery ng-controller="GalleryController as gallery"></section>
+				<section product-panels ng-controller="PanelController"></section>
+				
+			</li>
+		</ul>
+		
+
+		<script type="text/javascript" src="javascripts/angular.min.js"></script>
+		<script type="text/javascript" src="javascripts/app.js"></script>
+		<script type="text/javascript" src="javascripts/products.js"></script>
+	</body>
+</html>

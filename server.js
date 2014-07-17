@@ -14,7 +14,10 @@
     app.use(express["static"](__dirname + '/public'));
     app.use(express.logger('dev'));
     app.use(express.bodyParser());
-    return app.use(express.methodOverride());
+    app.use(express.methodOverride());
+    app.set('views', __dirname + '/public/views');
+    app.set('view engine', 'jade');
+    app.engine('html', require('ejs').renderFile);
   });
 
   require('./app/routes.js')(app);

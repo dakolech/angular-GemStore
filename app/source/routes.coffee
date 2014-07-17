@@ -8,7 +8,7 @@ im.convert.path = './convert.exe'
 
 module.exports = (app) ->
 
-	# api ---------------------------------------------------------------------
+	# api --------------------------------------------------------------------- 
 	# get all products
 	app.get '/api/products', (req, res) ->
 
@@ -22,6 +22,27 @@ module.exports = (app) ->
 			res.json(products); # return all products in JSON format
 			return
 		return
+		
+	app.get '/admin', (req, res) ->
+		res.render('admin.html')
+		return
+		
+	app.get '/', (req, res) ->
+		res.render('index.html')
+		return
+		
+	app.get '/product', (req, res) ->
+		res.render('product.html')
+		return
+		
+		
+	app.get '/products/:product_id', (req, res) ->
+		Product.findById req.params.product_id,  (err, product) ->
+			res.send(err) if (err)
+			res.render('product.html', { name: product.name } )	
+			return		
+		return
+
 		
 	app.post '/api/products', (req, res) ->
 		console.log(req.body.id)

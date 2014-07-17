@@ -40,7 +40,6 @@
 					</ul>
 					
 					<div class="panel" ng-show="isSelected(1)">
-						<h4>Preview</h4>
 						<h3 product-title></h3>
 						<section product-gallery ng-controller="GalleryController as gallery"></section>
 						<section product-panels ng-controller="PanelController"></section>
@@ -48,7 +47,6 @@
 					
 					<div class="panel" ng-show="isSelected(2)">
 						<a href class="pull-right" ng-click="deleteProduct(product._id)"> x </a><br>
-						<h4>Editing</h4>
 						<h3 product-title></h3>
 						<form>
 							<input ng-model="formData.image"  type="file" accept="image/*" image="image" onchange="angular.element(this).scope().imagesChanged(this)" multiple />
