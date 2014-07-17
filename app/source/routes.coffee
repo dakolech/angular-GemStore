@@ -36,10 +36,10 @@ module.exports = (app) ->
 		return
 		
 		
-	app.get '/products/:product_id', (req, res) ->
+	app.get '/api/products/:product_id', (req, res) ->
 		Product.findById req.params.product_id,  (err, product) ->
 			res.send(err) if (err)
-			res.render('product.html', { name: product.name } )	
+			res.json(product);
 			return		
 		return
 

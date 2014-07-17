@@ -18,6 +18,9 @@
     app.set('views', __dirname + '/public/views');
     app.set('view engine', 'jade');
     app.engine('html', require('ejs').renderFile);
+    app.use(function(req, res) {
+      return res.sendfile(__dirname + '/public/index.html');
+    });
   });
 
   require('./app/routes.js')(app);

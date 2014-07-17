@@ -32,14 +32,12 @@
     app.get('/product', function(req, res) {
       res.render('product.html');
     });
-    app.get('/products/:product_id', function(req, res) {
+    app.get('/api/products/:product_id', function(req, res) {
       Product.findById(req.params.product_id, function(err, product) {
         if (err) {
           res.send(err);
         }
-        res.render('product.html', {
-          name: product.name
-        });
+        res.json(product);
       });
     });
     app.post('/api/products', function(req, res) {

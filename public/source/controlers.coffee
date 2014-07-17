@@ -3,6 +3,19 @@
 # Controllers 
 
 angular.module('myApp.controllers', [])
+
+.controller('MyCtrl1', ['$scope', '$http', 'ProductService', '$routeParams', ($scope, $http, ProductService, $routeParams) ->
+
+])
+
+.controller 'StoreControllerOne', ['$scope', '$http', 'ProductService', '$routeParams', ($scope, $http, ProductService, $routeParams) ->
+	$scope.findOne = ->
+        $scope.product = ProductService.get({
+            id : $routeParams.id
+        });
+
+]
+
 .controller 'StoreController', ['$scope', '$http', ($scope, $http) ->
 	$scope.formData = {}
 	$scope.formReview = {}

@@ -18,6 +18,9 @@ app.configure ->
 	app.set('views', __dirname + '/public/views')
 	app.set('view engine', 'jade')
 	app.engine('html', require('ejs').renderFile)
+	app.use( (req, res) ->
+		res.sendfile(__dirname + '/public/index.html');
+	);
 	return
 
 
