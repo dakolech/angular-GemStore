@@ -1,0 +1,3 @@
+cd ..
+nodemon server.js
+
