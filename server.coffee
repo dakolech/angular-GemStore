@@ -17,7 +17,7 @@ app.configure ->
 	app.use(express.bodyParser())						# pull information from html in POST
 	app.use(express.methodOverride()) 					# simulate DELETE and PUT
 	app.set('views', __dirname + '/public/views')
-	app.set('view engine', 'jade')
+	#app.set('view engine', 'jade')
 	app.engine('html', require('ejs').renderFile)
 	return
 

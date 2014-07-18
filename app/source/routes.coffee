@@ -23,6 +23,14 @@ module.exports = (app) ->
 			return
 		return
 		
+		
+	app.get '/api/products/:product_id', (req, res) ->
+		Product.findById req.params.product_id,  (err, product) ->
+			res.send(err) if (err)    
+			res.json(product); 
+			return
+		return
+		
 	app.get '/admin', (req, res) ->
 		res.render('admin.html')
 		return
@@ -32,9 +40,9 @@ module.exports = (app) ->
 		return	
 		
 		
-	app.get '/product', (req, res) ->
-		res.render('views/product.html')
-		return
+	#app.get '/product', (req, res) ->
+	#	res.render('views/product.html')
+	#	return
 		
 		
 	app.get '/products/:product_id', (req, res) ->

@@ -23,14 +23,19 @@
         res.json(products);
       });
     });
+    app.get('/api/products/:product_id', function(req, res) {
+      Product.findById(req.params.product_id, function(err, product) {
+        if (err) {
+          res.send(err);
+        }
+        res.json(product);
+      });
+    });
     app.get('/admin', function(req, res) {
       res.render('admin.html');
     });
     app.get('/', function(req, res) {
       res.render('index.html');
-    });
-    app.get('/product', function(req, res) {
-      res.render('views/product.html');
     });
     app.get('/products/:product_id', function(req, res) {
       Product.findById(req.params.product_id, function(err, product) {

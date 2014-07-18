@@ -16,7 +16,6 @@
     app.use(express.bodyParser());
     app.use(express.methodOverride());
     app.set('views', __dirname + '/public/views');
-    app.set('view engine', 'jade');
     app.engine('html', require('ejs').renderFile);
   });
 

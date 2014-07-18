@@ -15,6 +15,8 @@ angular.module('myApp.controllers', [])
         $scope.product = ProductService.get({
             id : $routeParams.id
         });
+		console.log($scope.product.id)
+		return
 
 ]
 
