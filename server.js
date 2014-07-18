@@ -8,7 +8,7 @@
 
   mongoose = require('mongoose');
 
-  mongoose.connect('mongodb://node:node@mongo.onmodulus.net:27017/uwO3mypu');
+  mongoose.connect('mongodb://dakolech:dako222@novus.modulusmongo.net:27017/po5Vymyq');
 
   app.configure(function() {
     app.use(express["static"](__dirname + '/public'));
