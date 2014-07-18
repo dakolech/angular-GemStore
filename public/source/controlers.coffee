@@ -3,6 +3,7 @@
 # Controllers 
 
 angular.module('myApp.controllers', [])
+<<<<<<< HEAD
 
 .controller 'MyCtrl1', ['$scope', '$http', 'ProductService', '$routeParams', ($scope, $http, ProductService, $routeParams) ->
 
@@ -17,6 +18,8 @@ angular.module('myApp.controllers', [])
 
 ]
 
+=======
+>>>>>>> parent of df52395... working with routes
 .controller 'StoreController', ['$scope', '$http', ($scope, $http) ->
 	$scope.formData = {}
 	$scope.formReview = {}
