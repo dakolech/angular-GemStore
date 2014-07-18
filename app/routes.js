@@ -30,14 +30,16 @@
       res.render('index.html');
     });
     app.get('/product', function(req, res) {
-      res.render('product.html');
+      res.render('views/product.html');
     });
-    app.get('/api/products/:product_id', function(req, res) {
+    app.get('/products/:product_id', function(req, res) {
       Product.findById(req.params.product_id, function(err, product) {
         if (err) {
           res.send(err);
         }
-        res.json(product);
+        res.render('product.html', {
+          name: product.name
+        });
       });
     });
     app.post('/api/products', function(req, res) {

@@ -3,7 +3,7 @@
   'use strict';
   angular.module('myApp.services', []).value('version', '0.1').factory('ProductService', [
     '$resource', function($resource) {
-      return $resource('/api/products/:id', {
+      return $resource('/products/:id', {
         id: '@_id'
       });
     }

@@ -9,6 +9,7 @@ mongoose = require('mongoose') 					# mongoose for mongodb
 # configuration =================
 
 mongoose.connect('mongodb://node:node@mongo.onmodulus.net:27017/uwO3mypu') 	# connect to mongoDB database on modulus.io
+#mongoose.connect('mongodb://dakolech:dako222@novus.modulusmongo.net:27017/po5Vymyq') 
 
 app.configure ->
 	app.use(express.static(__dirname + '/public')) 		# set the static files location /public/img will be /img for users
@@ -18,9 +19,6 @@ app.configure ->
 	app.set('views', __dirname + '/public/views')
 	app.set('view engine', 'jade')
 	app.engine('html', require('ejs').renderFile)
-	app.use( (req, res) ->
-		res.sendfile(__dirname + '/public/index.html');
-	);
 	return
 
 

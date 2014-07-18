@@ -4,11 +4,12 @@
 
 angular.module('myApp.controllers', [])
 
-.controller('MyCtrl1', ['$scope', '$http', 'ProductService', '$routeParams', ($scope, $http, ProductService, $routeParams) ->
+.controller 'MyCtrl1', ['$scope', '$http', 'ProductService', '$routeParams', ($scope, $http, ProductService, $routeParams) ->
 
-])
+]
 
 .controller 'StoreControllerOne', ['$scope', '$http', 'ProductService', '$routeParams', ($scope, $http, ProductService, $routeParams) ->
+		
 	$scope.findOne = ->
         $scope.product = ProductService.get({
             id : $routeParams.id
@@ -152,7 +153,7 @@ angular.module('myApp.controllers', [])
 		
 	return
 
-]
+] 
   
 .controller "PanelController", ['$scope', '$http', ($scope, $http) ->
 	$scope.tab = 1

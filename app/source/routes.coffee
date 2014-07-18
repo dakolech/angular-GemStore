@@ -29,18 +29,19 @@ module.exports = (app) ->
 		
 	app.get '/', (req, res) ->
 		res.render('index.html')
-		return
+		return	
+		
 		
 	app.get '/product', (req, res) ->
-		res.render('product.html')
+		res.render('views/product.html')
 		return
 		
 		
-	app.get '/api/products/:product_id', (req, res) ->
+	app.get '/products/:product_id', (req, res) ->
 		Product.findById req.params.product_id,  (err, product) ->
 			res.send(err) if (err)
-			res.json(product);
-			return		
+			res.render('product.html', { name: product.name } )     
+			return      
 		return
 
 		
