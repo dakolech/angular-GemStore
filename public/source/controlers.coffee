@@ -11,14 +11,15 @@ angular.module('myApp.controllers', [])
 
 .controller 'StoreControllerOne', ['$scope', '$http', 'ProductService', '$routeParams', ($scope, $http, ProductService, $routeParams) ->
 		
-	$scope.findOne = ->
-        $scope.product = ProductService.get({
-            id : $routeParams.id
-        });
-		console.log($scope.product.id)
-		return
-
-]
+	$http.get('/api/products/' + id)
+		.success (data) ->
+			$scope.products = data
+			console.log(data)
+			return
+		.error (data) ->
+			console.log('Error: ' + data)
+			return
+] 
 
 .controller 'StoreController', ['$scope', '$http', ($scope, $http) ->
 	$scope.formData = {}
@@ -134,7 +135,7 @@ angular.module('myApp.controllers', [])
 				
 		$scope.formData = {}
 		$scope.files = {}
-		return
+		return 
 
 	$scope.deleteImage = (id, name) ->
 		if (confirm("Are you sure to delete this image?"))

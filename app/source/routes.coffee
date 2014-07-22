@@ -31,13 +31,13 @@ module.exports = (app) ->
 			return
 		return
 		
-	app.get '/admin', (req, res) ->
-		res.render('admin.html')
-		return
+	#app.get '/admin', (req, res) ->
+	#	res.render('admin.html')
+	#	return
 		
-	app.get '/', (req, res) ->
-		res.render('index.html')
-		return	
+	#app.get '/', (req, res) ->
+	#	res.render('index.html')
+	#	return	
 		
 		
 	#app.get '/product', (req, res) ->
@@ -45,12 +45,12 @@ module.exports = (app) ->
 	#	return
 		
 		
-	app.get '/products/:product_id', (req, res) ->
-		Product.findById req.params.product_id,  (err, product) ->
-			res.send(err) if (err)
-			res.render('product.html', { name: product.name } )     
-			return      
-		return
+	#app.get '/products/:product_id', (req, res) ->
+	#	Product.findById req.params.product_id,  (err, product) ->
+	#		res.send(err) if (err)
+	#		res.render('product.html', { name: product.name } )     
+	#		return      
+	#	return
 
 		
 	app.post '/api/products', (req, res) ->

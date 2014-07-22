@@ -31,22 +31,6 @@
         res.json(product);
       });
     });
-    app.get('/admin', function(req, res) {
-      res.render('admin.html');
-    });
-    app.get('/', function(req, res) {
-      res.render('index.html');
-    });
-    app.get('/products/:product_id', function(req, res) {
-      Product.findById(req.params.product_id, function(err, product) {
-        if (err) {
-          res.send(err);
-        }
-        res.render('product.html', {
-          name: product.name
-        });
-      });
-    });
     app.post('/api/products', function(req, res) {
       console.log(req.body.id);
       switch (req.body.what) {

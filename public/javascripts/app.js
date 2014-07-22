@@ -8,7 +8,7 @@
         controller: 'MyCtrl1'
       });
       $routeProvider.when('/products/:id', {
-        templateUrl: 'views/product.html',
+        templateUrl: 'product.html',
         controller: 'StoreControllerOne'
       });
       return $routeProvider.otherwise({

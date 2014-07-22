@@ -13,12 +13,13 @@ mongoose.connect('mongodb://dakolech:dako222@novus.modulusmongo.net:27017/po5Vym
 
 app.configure ->
 	app.use(express.static(__dirname + '/public')) 		# set the static files location /public/img will be /img for users
+	app.use(express.static(__dirname + '/products'))
 	app.use(express.logger('dev')) 						# log every request to the console
 	app.use(express.bodyParser())						# pull information from html in POST
 	app.use(express.methodOverride()) 					# simulate DELETE and PUT
-	app.set('views', __dirname + '/public/views')
+	#app.set('views', __dirname + '/public/views')
 	#app.set('view engine', 'jade')
-	app.engine('html', require('ejs').renderFile)
+	#app.engine('html', require('ejs').renderFile)
 	return
 
 

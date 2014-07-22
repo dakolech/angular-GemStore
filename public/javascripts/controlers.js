@@ -3,12 +3,12 @@
   'use strict';
   angular.module('myApp.controllers', []).controller('MyCtrl1', ['$scope', '$http', 'ProductService', '$routeParams', function($scope, $http, ProductService, $routeParams) {}]).controller('StoreControllerOne', [
     '$scope', '$http', 'ProductService', '$routeParams', function($scope, $http, ProductService, $routeParams) {
-      $scope.findOne = function() {
-        return $scope.product = ProductService.get({
-          id: $routeParams.id
-        });
-      };
-      console.log($scope.product.id);
+      return $http.get('/api/products/' + id).success(function(data) {
+        $scope.products = data;
+        console.log(data);
+      }).error(function(data) {
+        console.log('Error: ' + data);
+      });
     }
   ]).controller('StoreController', [
     '$scope', '$http', function($scope, $http) {
