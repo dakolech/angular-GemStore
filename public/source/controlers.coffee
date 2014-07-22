@@ -5,11 +5,14 @@
 angular.module('myApp.controllers', [])
 
 
-.controller 'MyCtrl1', ['$scope', '$http', 'ProductService', '$routeParams', ($scope, $http, ProductService, $routeParams) ->
-
-]
-
 .controller 'StoreControllerOne', ['$scope', '$http', 'ProductService', '$routeParams', ($scope, $http, ProductService, $routeParams) ->
+
+	$scope.findOne = ->
+        $scope.product = ProductService.get({
+            id : $routeParams.id
+        });
+		console.log($scope.product)
+		return
 		
 	$http.get('/api/products/' + id)
 		.success (data) ->

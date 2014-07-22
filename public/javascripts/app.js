@@ -3,16 +3,9 @@
   'use strict';
   angular.module('myApp', ['ngRoute', 'myApp.filters', 'myApp.services', 'myApp.directives', 'myApp.controllers']).config([
     '$routeProvider', function($routeProvider) {
-      $routeProvider.when('/view1', {
-        templateUrl: 'views/product.html',
-        controller: 'MyCtrl1'
-      });
-      $routeProvider.when('/products/:id', {
+      return $routeProvider.when('/products/:id', {
         templateUrl: 'product.html',
         controller: 'StoreControllerOne'
-      });
-      return $routeProvider.otherwise({
-        redirectTo: '/'
       });
     }
   ]);
